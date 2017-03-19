@@ -3,27 +3,29 @@
 		<title>Tooltip</title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		<style>
-			span {
+			.custom-tooltip {
 				background: blue;
 			} 
 		</style>
 	</head>
 	<body>
 		<div class="container">
-			This is the content with a <span onMouseOver="tooltipShow(event)" onMouseOut="tooltipHide(event)">tooltip</span> hover effect.
+			This is the content with a <span class="custom-tooltip">tooltip</span> hover effect.
 			<div id="output"></div>
 		</div>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		<script>
-			var output = document.getElementById('output');
-			var btns = document.getElementsByClassName('btn');
+			var tooltips = document.getElementsByClassName('custom-tooltip');
+			for(var i=0; i<tooltips.length;i++){
+				tooltips[i].addEventListener('mouseover', tooltipShow, false);
+				tooltips[i].addEventListener('mouseout', tooltipShow, false);
+			}
 			//onMouseOver and onMouseOut comes with their own events
 			function tooltipShow(e){
 				console.log(e);
 			}
-			function tooltipHide(e){
-				console.log(e);
+			function tooltipHide(){
 			}
 		</script>
 	</body>
