@@ -30,14 +30,18 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		<script>
 			var tooltips = document.getElementsByClassName('custom-tooltip');
-			var output = document.getElementById('output');
+			var outpt = document.getElementById('output');
+			var tipInterval;
 			for(var i=0; i<tooltips.length;i++){
 				tooltips[i].onmouseover =  function(e){
 					var x = e.clientX, y = e.clientY;//Also can use x or y but might not work on older browser
+					clearInterval(tipInterval);//Clear any interval
 					output.style.top = (y+5) + 'px';
 					output.style.left = (x+5) + 'px';
 					output.style.display = 'block';
 					output.innerHTML = this.getAttribute("data-toolcontent");
+					tipInterval = setInterval(function(){ output.style.display = 'none'; }, 2000);
+					//Note it is important that interval variable is set globally otherwise clearInterval won't detect it.
 				}
 				tooltips[i].onmouseout =  function(e){
 					output.style.display = 'none';
