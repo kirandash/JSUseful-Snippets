@@ -12,15 +12,28 @@
 			<div id="btnclick" class="btn btn-primary">
 				Click Me
 			</div>
+			<div id="btnclick" class="btn btn-warning">
+				Click Me
+			</div>
 		</div>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		<script>
 			var output = document.getElementById('output');
-			var btn = document.getElementById('btnclick');
+			var btns = document.getElementsByClassName('btn');
+			for(i=0;i<btns.length;i++){
+				btns[i].addEventListener('click', btnsFunc, false);
+				console.log(i);
+			}
+
+			function btnsFunc() {
+				htmlOutput('clicked');
+			}
+			/*var btn = document.getElementById('btnclick');
+			
 			btn.addEventListener('click', function(){
 				htmlOutput('Hello World!');
-			});
+			});*/
 			function htmlOutput(myoutput){
 				output.innerHTML = myoutput;
 			}
