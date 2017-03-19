@@ -9,7 +9,7 @@
 	<body>
 		<div class="container">
 			<div id="output">No Content yet.</div>
-			<div class="btn btn-primary" onclick="htmlOutput('test');">
+			<div id="btnclick" class="btn btn-primary">
 				Click Me
 			</div>
 		</div>
@@ -17,6 +17,10 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		<script>
 			var output = document.getElementById('output');
+			var btn = document.getElementById('btnclick');
+			btn.addEventListener('click', function(){
+				htmlOutput('Hello World!');
+			});
 			function htmlOutput(myoutput){
 				output.innerHTML = myoutput;
 			}
