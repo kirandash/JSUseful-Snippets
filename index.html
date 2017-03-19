@@ -9,10 +9,10 @@
 	<body>
 		<div class="container">
 			<div id="output">No Content yet.</div>
-			<div id="btnclick" class="btn btn-primary">
+			<div id="btnclick" class="btn btn-primary" data-message="clicked first button">
 				Click Me
 			</div>
-			<div id="btnclick" class="btn btn-warning">
+			<div id="btnclick" class="btn btn-warning" data-message="clicked second button">
 				Click Me
 			</div>
 		</div>
@@ -22,11 +22,13 @@
 			var output = document.getElementById('output');
 			var btns = document.getElementsByClassName('btn');
 			for(i=0;i<btns.length;i++){
-				btns[i].addEventListener('click', btnsFunc, false);
+				btns[i].addEventListener('click', btnsFunc, false);//No need of using parameters with function
 				console.log(i);
 			}
 
 			function btnsFunc() {
+				console.log(this.innerText);//this references the entire object on click
+				console.log(this.getAttribute('data-message'));
 				htmlOutput('clicked');
 			}
 			/*var btn = document.getElementById('btnclick');
