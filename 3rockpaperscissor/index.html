@@ -9,8 +9,8 @@
 	<body>
 		<div class="container">
 			<div class="row">
-				<div class="col-xs-6"><h1>Player 1</h1><div id="player1" class="btn btn-danger">Play</div></div>
-				<div class="col-xs-6"><h1>Player 2</h1><div id="player2" class="btn btn-danger">Play</div></div>
+				<div class="col-xs-6"><h1>Player 1</h1><div id="player1" class="btn btn-danger">Play</div><div></div></div>
+				<div class="col-xs-6"><h1>Player 2</h1><div id="player2" class="btn btn-danger">Play</div><div></div></div>
 			</div>
 		</div>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
@@ -18,11 +18,12 @@
 		<script>
 			var btnone = document.getElementById("player1");
 			var btntwo = document.getElementById("player2");
-			btnone.onclick = function(){taketurn();} //Without e this will reference the entire window
-			btntwo.onclick = function(){taketurn();}
+			btnone.onclick = function(e){taketurn(e);} //Without e this will reference the entire window
+			btntwo.onclick = function(e){taketurn(e);}
 
-			function taketurn() {
-				console.log(this); //Without e this will reference the entire window
+			function taketurn(e) {
+				console.log(e); //Without e this will reference the entire window
+				console.log(e.srcElement.nextSibling.innerHTML = "Clicked");
 			}
 		</script>
 	</body>
