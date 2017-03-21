@@ -18,18 +18,33 @@
 		<script>
 			var btnone = document.getElementById("player1");
 			var btntwo = document.getElementById("player2");
+			var picks = [0,0]; //To record values from game rock/paper/scissor
+
 			btnone.onclick = function(e){taketurn(e);} //Without e this will reference the entire window
 			btntwo.onclick = function(e){taketurn(e);}
 
 			var myArray = ['Rock','Paper','Scissor'];
 
 			function taketurn(e) {
-				console.log(e); //Without e this will reference the entire window
-				e.srcElement.nextSibling.innerHTML = randpick();
+				//console.log(e); //Without e this will reference the entire window
+				var gameplay = randpick();
+				e.srcElement.nextSibling.innerHTML = myArray[gameplay];
+				if(e.srcElement.id == "player1"){
+					picks[0] = gameplay + 1; //Added 1 to convert zero indexed to start from 1
+				}else{
+					picks[1] = gameplay + 1;
+				}
+				console.log(picks);
 			}
 
 			function randpick(){
-				return myArray[Math.floor(Math.random() * myArray.length)]; //Get a random value in between 0 to the length of array - and turn it into floor(remove decimal)
+				return Math.floor(Math.random() * myArray.length); //Get a random value in between 0 to the length of array - and turn it into floor(remove decimal)
+			}
+
+			function winner(){
+				var one = picks[0];
+				var two = picks[1];
+				
 			}
 		</script>
 	</body>
