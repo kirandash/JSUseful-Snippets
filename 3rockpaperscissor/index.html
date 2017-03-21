@@ -8,6 +8,7 @@
 	</head>
 	<body>
 		<div class="container">
+			<div id="output" class="row text-center text-capitalize">Game Result</div>
 			<div class="row">
 				<div class="col-xs-6"><h1>Player 1</h1><div id="player1" class="btn btn-danger">Play</div><div class="jumbotron text-center">Result</div></div>
 				<div class="col-xs-6"><h1>Player 2</h1><div id="player2" class="btn btn-danger">Play</div><div class="jumbotron text-center">Result</div></div>
@@ -18,6 +19,8 @@
 		<script>
 			var btnone = document.getElementById("player1");
 			var btntwo = document.getElementById("player2");
+			var output = document.getElementById("output");
+			
 			var picks = [0,0]; //To record values from game rock/paper/scissor
 
 			btnone.onclick = function(e){taketurn(e);} //Without e this will reference the entire window
@@ -35,6 +38,7 @@
 					picks[1] = gameplay + 1;
 				}
 				console.log(picks);
+				winner();
 			}
 
 			function randpick(){
@@ -44,7 +48,19 @@
 			function winner(){
 				var one = picks[0];
 				var two = picks[1];
-				
+				var result = 'Start Game';
+				if(one == two){ result = 'tie game'; }			
+				else if(one == 1 && two == 3){ result = 'Player 1 Wins'; }
+				else if(one == 2 && two == 1){ result = 'Player 1 Wins'; }
+				else if(one == 2 && two == 3){ result = 'Player 2 Wins'; }
+				else if(one == 3 && two == 1){ result = 'Player 2 Wins'; }
+				else if(one == 3 && two == 2){ result = 'Player 1 Wins'; }
+				else { result = 'No winner!'; }
+				htmloutput(result);
+			}
+
+			function htmloutput(myoutput){
+				output.innerHTML = myoutput;
 			}
 		</script>
 	</body>
